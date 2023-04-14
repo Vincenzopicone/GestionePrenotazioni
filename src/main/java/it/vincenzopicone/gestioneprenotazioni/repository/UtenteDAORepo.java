@@ -1,5 +1,11 @@
 package it.vincenzopicone.gestioneprenotazioni.repository;
 
-public class UtenteDAORepo {
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import it.vincenzopicone.gestioneprenotazioni.model.Utente;
+
+@Repository
+public interface UtenteDAORepo extends CrudRepository<Utente, Long> {
 
 }
