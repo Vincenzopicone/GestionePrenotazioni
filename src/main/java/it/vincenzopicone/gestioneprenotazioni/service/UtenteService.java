@@ -25,7 +25,7 @@ public class UtenteService {
 		Utente U = fakeUtenteProvider.getObject();
 		inserisciUtente(U);
 	}
-	public void creaCustomUser() {
+	public void creaCustomUtente() {
 		Utente U = customUtenteProvider.getObject();
 		inserisciUtente(U);
 	}

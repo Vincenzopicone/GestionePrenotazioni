@@ -1,5 +1,8 @@
 package it.vincenzopicone.gestioneprenotazioni.model;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,15 +26,23 @@ public class Prenotazione {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(nullable = false)
+	@JoinColumn(name="prenotazione_utente")
+	@OneToMany (mappedBy="id_utente")
 	private Utente utente;
 	@Column(nullable = false)
 	@JoinColumn(name="prenotazione_postazione")
-	@ManyToMany
+	@OneToMany (mappedBy="id_postazione")
 	private Postazione postazione;
-	public Prenotazione(Utente utente, Postazione postazione) {
+	@Column(nullable=false)
+	private LocalDate data_prenotazione;
+	
+	
+	
+	public Prenotazione(Utente utente, Postazione postazione, LocalDate data) {
 		super();
 		this.utente = utente;
 		this.postazione = postazione;
+		this.data_prenotazione = data;
 	}
 	
 	

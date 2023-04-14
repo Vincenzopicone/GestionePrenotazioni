@@ -42,10 +42,10 @@ public class EdificioService {
 		repo.save(e);
 		
 	}
-	public Edificio findUtenteById(Long id) {
+	public Edificio findEdificioById(Long id) {
 		return repo.findById(id).get();
 	}
-	public List<Edificio> findAllUtente() {
+	public List<Edificio> findAllEdificio() {
 		return (List<Edificio>) repo.findAll();
 		
 	}

@@ -1,5 +1,7 @@
 package it.vincenzopicone.gestioneprenotazioni.configuration;
 
+import java.time.LocalDate;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -13,8 +15,8 @@ public class PrenotazioneConfiguration {
 	
 	@Bean("NuovaPrenotazione")
 	@Scope("prototype")
-	public Prenotazione nuovaPrenotazione(Utente utente, Postazione postazione) {
-		return new Prenotazione(utente, postazione);
+	public Prenotazione nuovaPrenotazione(Utente utente, Postazione postazione, LocalDate data) {
+		return new Prenotazione(utente, postazione, data);
 	}
 
 }

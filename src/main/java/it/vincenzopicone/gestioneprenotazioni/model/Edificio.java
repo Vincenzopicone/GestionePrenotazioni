@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -27,7 +28,7 @@ public class Edificio {
 	@Column(nullable = false)
 	private String citta;
 	
-	@OneToMany(mappedBy="edificio")
+	@ManyToMany(mappedBy="id_edificio")
 	private Postazione postazione;
 
 	public Edificio(String nome_edificio, String indirizzo, String citta) {

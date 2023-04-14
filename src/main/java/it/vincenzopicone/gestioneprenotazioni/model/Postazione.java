@@ -1,5 +1,7 @@
 package it.vincenzopicone.gestioneprenotazioni.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -8,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -32,12 +35,13 @@ public class Postazione {
 	private int num_max_partecipanti;
 	@Column(nullable = false)
 	@JoinColumn(name="postazione_edificio")
-	@ManyToOne
-	private Edificio edificio;
-	@ManyToOne
-	private Prenotazione prenotazione;
-	public Postazione(String descrizione, TipoPostazione tipo_postazione, int num_max_partecipanti, Edificio edificio,
-			Prenotazione prenotazione) {
+	@ManyToMany 
+	private List<Edificio> edificio;
+	@ManyToMany
+	private List<Prenotazione> prenotazione;
+	public Postazione(String descrizione, TipoPostazione tipo_postazione, 
+			int num_max_partecipanti,List <Edificio> edificio,
+			List <Prenotazione> prenotazione) {
 		super();
 		this.descrizione = descrizione;
 		this.tipo_postazione = tipo_postazione;
