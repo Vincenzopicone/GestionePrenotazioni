@@ -1,5 +1,7 @@
 package it.vincenzopicone.gestioneprenotazioni.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import it.vincenzopicone.gestioneprenotazioni.model.Utente;
 import it.vincenzopicone.gestioneprenotazioni.repository.UtenteDAORepo;
+
 
 @Service
 public class UtenteService {
@@ -44,4 +47,12 @@ public class UtenteService {
 		repo.save(u);
 		
 	}
+	public Utente findUtenteById(Long id) {
+		return repo.findById(id).get();
+	}
+	public List<Utente> findAllUtente() {
+		return (List<Utente>) repo.findAll();
+		
+	}
+	
 }

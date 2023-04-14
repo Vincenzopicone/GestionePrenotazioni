@@ -27,7 +27,7 @@ public class Edificio {
 	@Column(nullable = false)
 	private String citta;
 	
-	@OneToMany
+	@OneToMany(mappedBy="edificio")
 	private Postazione postazione;
 
 	public Edificio(String nome_edificio, String indirizzo, String citta) {
