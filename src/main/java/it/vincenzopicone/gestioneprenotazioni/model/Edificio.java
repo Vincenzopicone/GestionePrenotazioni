@@ -24,7 +24,7 @@ public class Edificio {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(nullable = false)
-	private String nome_edificio;
+	private String nomeedificio;
 	@Column(nullable = false)
 	private String indirizzo;
 	@Column(nullable = false)
@@ -35,7 +35,7 @@ public class Edificio {
 
 	public Edificio(String nome_edificio, String indirizzo, String citta) {
 		super();
-		this.nome_edificio = nome_edificio;
+		this.nomeedificio = nome_edificio;
 		this.indirizzo = indirizzo;
 		this.citta = citta;
 	}

@@ -30,9 +30,9 @@ public class Postazione {
 	private String descrizione;
 	@Column
 	@Enumerated(EnumType.STRING)
-	private TipoPostazione tipo_postazione;
+	private TipoPostazione tipopostazione;
 	@Column(nullable = false)
-	private int num_max_partecipanti;
+	private int nummaxpartecipanti;
 	@ManyToOne
 	@JoinColumn(name="id_edificio")
 	private Edificio edificio;
@@ -41,8 +41,8 @@ public class Postazione {
 			int num_max_partecipanti, Edificio edificio) {
 		super();
 		this.descrizione = descrizione;
-		this.tipo_postazione = tipo_postazione;
-		this.num_max_partecipanti = num_max_partecipanti;
+		this.tipopostazione = tipo_postazione;
+		this.nummaxpartecipanti = num_max_partecipanti;
 		this.edificio = edificio;
 	}
 

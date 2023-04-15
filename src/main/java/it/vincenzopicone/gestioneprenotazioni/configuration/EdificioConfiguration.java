@@ -26,7 +26,7 @@ public class EdificioConfiguration {
 		Faker fake = Faker.instance(new Locale("it_IT"));
 		Edificio E = new Edificio();
 		
-		E.setNome_edificio(fake.company().name());
+		E.setNomeedificio(fake.company().name());
 		E.setIndirizzo(fake.address().streetAddress() + fake.address().streetAddressNumber());
 		E.setCitta(fake.address().city());
 		

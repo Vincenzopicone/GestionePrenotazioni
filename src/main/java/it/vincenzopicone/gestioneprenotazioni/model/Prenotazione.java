@@ -28,13 +28,11 @@ public class Prenotazione {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@ManyToOne
-	@JoinColumn(name="prenotazione_utente")
 	private Utente utente;
 	@ManyToOne
-	@JoinColumn(name="id_postazione")
 	private Postazione postazione;
 	@Column(nullable=false)
-	private LocalDate data_prenotazione;
+	private LocalDate dataprenotazione;
 	
 	
 	
@@ -42,7 +40,7 @@ public class Prenotazione {
 		super();
 		this.utente = utente;
 		this.postazione = postazione;
-		this.data_prenotazione = data;
+		this.dataprenotazione = data;
 	}
 	
 	
