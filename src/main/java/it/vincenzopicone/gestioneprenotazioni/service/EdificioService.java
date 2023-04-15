@@ -5,15 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import it.vincenzopicone.gestioneprenotazioni.model.Edificio;
 import it.vincenzopicone.gestioneprenotazioni.repository.EdificioDAORepo;
 
 
-
+@Service
 public class EdificioService {
 
-@Autowired EdificioDAORepo repo;
+    @Autowired EdificioDAORepo repo;
 	
 	@Autowired @Qualifier("FakeEdificio") private ObjectProvider<Edificio> fakeEdificioProvider;
 	@Autowired @Qualifier("NuovoEdificio") private ObjectProvider<Edificio> nuovoEdificioProvider;

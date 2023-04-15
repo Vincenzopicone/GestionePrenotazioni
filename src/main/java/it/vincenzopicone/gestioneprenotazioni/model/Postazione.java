@@ -33,21 +33,17 @@ public class Postazione {
 	private TipoPostazione tipo_postazione;
 	@Column(nullable = false)
 	private int num_max_partecipanti;
-	@Column(nullable = false)
-	@JoinColumn(name="postazione_edificio")
-	@ManyToMany 
-	private List<Edificio> edificio;
-	@ManyToMany
-	private List<Prenotazione> prenotazione;
+	@ManyToOne
+	@JoinColumn(name="id_edificio")
+	private Edificio edificio;
+	
 	public Postazione(String descrizione, TipoPostazione tipo_postazione, 
-			int num_max_partecipanti,List <Edificio> edificio,
-			List <Prenotazione> prenotazione) {
+			int num_max_partecipanti, Edificio edificio) {
 		super();
 		this.descrizione = descrizione;
 		this.tipo_postazione = tipo_postazione;
 		this.num_max_partecipanti = num_max_partecipanti;
 		this.edificio = edificio;
-		this.prenotazione = prenotazione;
 	}
 
 	

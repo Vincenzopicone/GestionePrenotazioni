@@ -21,7 +21,6 @@ public class UtenteService {
 	@Autowired @Qualifier("ParamsUtente") private ObjectProvider<Utente> paramsUtenteProvider;
 
 	public void creaFakeUtente() {
-
 		Utente U = fakeUtenteProvider.getObject();
 		inserisciUtente(U);
 	}

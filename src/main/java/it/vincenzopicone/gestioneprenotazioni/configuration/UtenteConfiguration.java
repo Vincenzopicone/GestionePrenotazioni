@@ -18,8 +18,8 @@ public class UtenteConfiguration {
 	public Utente fakeUtente() {
 		Faker fake = Faker.instance(new Locale("it_IT"));
 		Utente U = new Utente();
-		U.setUsername(fake.internet().domainName());
 		U.setNominativo(fake.name().fullName());
+		U.setUsername(U.getNominativo() + fake.number().randomDigit());
 		U.setEmail(U.getNominativo() + "@example.com");
 		return U;
 	}

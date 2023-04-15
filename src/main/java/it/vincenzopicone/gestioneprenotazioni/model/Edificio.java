@@ -1,5 +1,7 @@
 package it.vincenzopicone.gestioneprenotazioni.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,8 +30,8 @@ public class Edificio {
 	@Column(nullable = false)
 	private String citta;
 	
-	@ManyToMany(mappedBy="id_edificio")
-	private Postazione postazione;
+	@OneToMany(mappedBy="edificio")
+	private List<Postazione> postazione;
 
 	public Edificio(String nome_edificio, String indirizzo, String citta) {
 		super();
