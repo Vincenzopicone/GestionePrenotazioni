@@ -1,16 +1,19 @@
 package it.vincenzopicone.gestioneprenotazioni.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
-
+import it.vincenzopicone.gestioneprenotazioni.model.Postazione;
 import it.vincenzopicone.gestioneprenotazioni.model.Prenotazione;
-
+import it.vincenzopicone.gestioneprenotazioni.model.Utente;
 import it.vincenzopicone.gestioneprenotazioni.repository.PrenotazioneDAORepo;
 
+@Service
 public class PrenotazioneService {
 	
 @Autowired PrenotazioneDAORepo repo;
@@ -19,8 +22,8 @@ public class PrenotazioneService {
 
 	
 	
-	public void creaPrenotazione() {
-		Prenotazione P = nuovaPrenotazioneProvider.getObject();
+	public void creaPrenotazione(Utente utente, Postazione post, LocalDate data) {
+		Prenotazione P = nuovaPrenotazioneProvider.getObject(utente, post, data);
 		inserisciPrenotazione(P);
 	}
 	

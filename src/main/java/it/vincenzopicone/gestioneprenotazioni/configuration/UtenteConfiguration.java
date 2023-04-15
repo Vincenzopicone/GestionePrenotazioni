@@ -30,7 +30,7 @@ public class UtenteConfiguration {
 		return new Utente();
 	}
 	
-	@Bean("ParamsUser")
+	@Bean("ParamsUtente")
 	@Scope("prototype")
 	public Utente paramsUser (String user, String nomin, String email) {
 		return new Utente(user, nomin, email);

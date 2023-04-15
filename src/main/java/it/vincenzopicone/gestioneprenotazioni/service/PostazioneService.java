@@ -5,20 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
+import it.vincenzopicone.gestioneprenotazioni.model.Edificio;
 import it.vincenzopicone.gestioneprenotazioni.model.Postazione;
+import it.vincenzopicone.gestioneprenotazioni.model.TipoPostazione;
 import it.vincenzopicone.gestioneprenotazioni.repository.PostazioneDAORepo;
-
+@Service
 public class PostazioneService {
 
 	@Autowired PostazioneDAORepo repo;
 	
-	@Autowired @Qualifier("NuovaPostazione") private ObjectProvider<Postazione> nuovaPostazionesProvider;
+	@Autowired @Qualifier("NuovaPostazione") private ObjectProvider<Postazione> nuovaPostazioneProvider;
+	@Autowired @Qualifier("ParamsPostazione") private ObjectProvider<Postazione> paramsPostazioneProvider;
 
 	
 	
 	public void creaPostazione() {
-		Postazione P = nuovaPostazionesProvider.getObject();
+		Postazione P = nuovaPostazioneProvider.getObject();
+		inserisciPostazione(P);
+	}
+	public void paramsPostazione(String descr, TipoPostazione tipo, int numMax, Edificio edi) {
+		Postazione P = paramsPostazioneProvider.getObject(descr, tipo, numMax, edi);
 		inserisciPostazione(P);
 	}
 	
@@ -41,4 +49,5 @@ public class PostazioneService {
 		return (List<Postazione>) repo.findAll();
 		
 	}
+	
 }

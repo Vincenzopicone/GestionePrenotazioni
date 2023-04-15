@@ -29,8 +29,8 @@ public class UtenteService {
 		inserisciUtente(U);
 	}
 
-	public void creaParamsUtente() {
-		Utente U = paramsUtenteProvider.getObject();
+	public void creaParamsUtente(String user, String nomin, String email) {
+		Utente U = paramsUtenteProvider.getObject(user, nomin, email);
 		inserisciUtente(U);
 	}
 	
