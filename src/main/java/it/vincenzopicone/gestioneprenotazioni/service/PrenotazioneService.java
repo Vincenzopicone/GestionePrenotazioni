@@ -50,17 +50,17 @@ public class PrenotazioneService {
 		return (List<Prenotazione>) repo.findAll();
 		
 	}
-//	
-//	public List<Prenotazione> findByUtente(Utente u) {
-//		return (List<Prenotazione>) repo.listaDiUtenti(u);
-//	}
-//	
-//	public List<Prenotazione> findByUtenteData (Utente u, LocalDate data) {
-//		return (List<Prenotazione>) repo.listaDiUtentiConData(u, data);
-//	}
-//	
-//	public List<Prenotazione> findByPostazioneData (Postazione p, LocalDate data) {
-//		return (List<Prenotazione>) repo.listaDiPostazioniConData(p, data);
-//	}
+	
+	public List<Prenotazione> findByUtente(Utente u) {
+		return (List<Prenotazione>) repo.listaDiUtenti(u);
+	}
+	
+	public List<Prenotazione> findByUtenteData (Utente u, LocalDate data) {
+		return (List<Prenotazione>) repo.listaDiUtentiConData(u, data);
+	}
+	
+	public List<Prenotazione> findByPostazioneData (Postazione p, LocalDate data) {
+		return (List<Prenotazione>) repo.listaDiPostazioniConData(p, data);
+	}
 
 }
