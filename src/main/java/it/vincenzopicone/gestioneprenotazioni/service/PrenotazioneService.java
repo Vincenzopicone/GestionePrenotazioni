@@ -12,27 +12,32 @@ import it.vincenzopicone.gestioneprenotazioni.model.Postazione;
 import it.vincenzopicone.gestioneprenotazioni.model.Prenotazione;
 import it.vincenzopicone.gestioneprenotazioni.model.Utente;
 import it.vincenzopicone.gestioneprenotazioni.repository.PrenotazioneDAORepo;
+import it.vincenzopicone.gestioneprenotazioni.runner.GestionePrenotazioniRun;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class PrenotazioneService {
 	
 @Autowired PrenotazioneDAORepo repo;
 	
 	@Autowired @Qualifier("NuovaPrenotazione") private ObjectProvider<Prenotazione> nuovaPrenotazioneProvider;
-
-	
 	
 	public void creaPrenotazione(Utente utente, Postazione post, LocalDate data) {
 		Prenotazione P = nuovaPrenotazioneProvider.getObject(utente, post, data);
-		//boolean check = checkPrenotazione(utente, data);
-		//if(check == false) {
-			inserisciPrenotazione(P);
-			//}
-		
+		inserisciPrenotazione(P);		
 	}
 	
 	public void inserisciPrenotazione(Prenotazione p) {
+		List<Prenotazione> listaUtenti = findByUtenteData(p.getUtente(), p.getDataprenotazione());
+		List<Prenotazione> listaPostazioni = findByPostazioneData(p.getPostazione(), p.getDataprenotazione());
+		if(listaUtenti.size() > 0) {
+			log.info("Esiste una prenotazione per questa data");
+		} else if (listaPostazioni.size() > 0) {
+			log.info("La postazione non è disponibile in questa data");
+		} else {
 		repo.save(p);
+		}
 	}
 	public void rimuoviPrenotazione(Prenotazione p) {
 		repo.delete(p);
